@@ -252,6 +252,7 @@ v1.0: digest: sha256:xyz789... size: 1234
 2. Clique no seu repositório
 3. Você deve ver a imagem com a tag v1.0
 
+<img width="1908" height="575" alt="ECR" src="https://github.com/user-attachments/assets/96d5ccf4-0dc5-45aa-9ffa-4d12d360fb52" />
 
 ---
 
@@ -443,6 +444,10 @@ docker logs meu-website-prod
 2. Digite o IP público da EC2 + Porta: `http://54.123.45.67:80`
 3. Seu website deve aparecer! 🎉
 
+<img width="1918" height="953" alt="Site AWS" src="https://github.com/user-attachments/assets/090a42e5-c08e-4fc6-8b40-a8b7cb267203" />
+
+<img width="1918" height="1032" alt="Site AWS1" src="https://github.com/user-attachments/assets/390ed29b-d531-4f58-aaaa-e74503c66329" />
+
 
 ### Teste 2: Verificar logs na EC2
 
@@ -468,46 +473,6 @@ docker start meu-website-prod
 
 # Verificar se voltou
 docker ps
-```
-
----
-
-## 🔧 Troubleshooting
-
-### Problema 1: "Cannot connect to the Docker daemon"
-
-**Solução**:
-```bash
-sudo systemctl start docker
-sudo usermod -a -G docker $USER
-# Fazer logout e login novamente
-```
-
-### Problema 2: Site não abre no navegador
-
-**Verificações**:
-1. Security Group tem porta 80 aberta?
-2. Container está rodando? (`docker ps`)
-3. IP público está correto?
-4. Teste com curl na EC2: `curl localhost`
-
-### Problema 3: "No basic auth credentials" no pull do ECR
-
-**Solução**:
-```bash
-# Re-autenticar
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin [ECR_URI]
-```
-
-### Problema 4: Permissão negada no Docker
-
-**Solução**:
-```bash
-# Adicionar usuário ao grupo docker
-sudo usermod -a -G docker ec2-user
-# Logout e login
-exit
-ssh -i key.pem ec2-user@IP
 ```
 
 ---
