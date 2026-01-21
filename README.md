@@ -348,23 +348,13 @@ Anote:
 ssh -i meu-website-key.pem ec2-user@54.123.45.67
 ```
 
-
 Você verá:
 ```
-   ,     #_
-   ~\_  ####_        Amazon Linux 2023
-  ~~  \_#####\
-  ~~     \###|
-  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
-   ~~       V~' '->
-    ~~~         /
-      ~~._.   _/
-         _/ _/
-       _/m/'
+ https://aws.amazon.com/linux/amazon-linux-2023
+
 [ec2-user@ip-172-31-xx-xx ~]$
 ```
 
-*[Espaço para print: Conexão SSH estabelecida]*
 
 ### Passo 7.2: Instalar Docker na EC2
 
