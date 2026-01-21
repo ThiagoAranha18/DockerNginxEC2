@@ -1,4 +1,4 @@
-# 🚀 Laboratório DevOps - Projeto 1: Containerização com Docker e Deploy Manual na AWS
+# 🚀 Laboratório DevOps: Containerização com Docker e Deploy Manual na AWS
 
 ## 📋 Índice
 1. [Visão Geral](#visão-geral)
