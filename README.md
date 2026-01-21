@@ -495,8 +495,6 @@ docker rmi 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
 2. Selecione sua instância
 3. Actions → Instance State → Terminate
 
-*[Espaço para print: Confirmação de terminate]*
-
 ### Passo 3: Deletar imagem do ECR
 
 1. Console AWS → ECR
