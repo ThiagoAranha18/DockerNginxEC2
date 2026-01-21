@@ -85,6 +85,7 @@ Você deve ver a pasta `website/` com seus arquivos:
 ```bash
 ls -la website/
 ```
+<img width="324" height="180" alt="image" src="https://github.com/user-attachments/assets/a3a4eeb5-826a-4abe-97c3-0b586f9365ba" />
 
 
 ## 🐳 Fase 2: Containerização com Docker
