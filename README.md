@@ -1,4 +1,4 @@
-# 🚀 Laboratório DevOps - Projeto 1: Containerização com Docker e Deploy Manual na AWS
+# 🚀 Laboratório DevOps - Projeto: Containerização com Docker e Deploy Manual na AWS
 
 ## 📋 Índice
 1. [Visão Geral](#visão-geral)
@@ -189,7 +189,7 @@ http://localhost:8080
 
 Após criar, você verá algo como:
 ```
-123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website
+123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website
 ```
 
 ⚠️ **Importante**: Copie e guarde esta URI, você precisará dela!
@@ -207,17 +207,17 @@ aws configure
 Você precisará fornecer:
 - **AWS Access Key ID**: Obtida no IAM
 - **AWS Secret Access Key**: Obtida no IAM
-- **Default region**: ex: us-east-1
+- **Default region**: ex: sa-east-1
 - **Default output format**: json
 
 ### Passo 5.2: Autenticar Docker com ECR
 
 ```bash
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region sa-east-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.sa-east-1.amazonaws.com
 ```
 
 ⚠️ **Substitua**: 
-- `us-east-1` pela sua região
+- `sa-east-1` pela sua região
 - `123456789012` pelo seu Account ID
 
 Você deve ver:
@@ -229,18 +229,18 @@ Login Succeeded
 ### Passo 5.3: Tagar a imagem para o ECR
 
 ```bash
-docker tag meu-website:v1.0 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
+docker tag meu-website:v1.0 123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website:v1.0
 ```
 
 ### Passo 5.4: Push da imagem
 
 ```bash
-docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
+docker push 123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website:v1.0
 ```
 
 Você verá o progresso do upload:
 ```
-The push refers to repository [123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website]
+The push refers to repository [123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website]
 abc123: Pushed
 def456: Pushed
 v1.0: digest: sha256:xyz789... size: 1234
@@ -391,27 +391,27 @@ ssh -i meu-website-key.pem ec2-user@54.123.45.67
 ### Passo 7.4: Autenticar Docker com ECR na EC2
 
 ```bash
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region sa-east-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.sa-east-1.amazonaws.com
 ```
 
 
 ### Passo 7.5: Pull da imagem do ECR
 
 ```bash
-docker pull 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
+docker pull 123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website:v1.0
 ```
 
 Você verá:
 ```
 v1.0: Pulling from meu-website
-Status: Downloaded newer image for 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
+Status: Downloaded newer image for 123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website:v1.0
 ```
 
 
 ### Passo 7.6: Executar o container
 
 ```bash
-docker run -d -p 80:80 --name meu-website-prod --restart always 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
+docker run -d -p 80:80 --name meu-website-prod --restart always 123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website:v1.0
 ```
 
 ### Passo 7.7: Verificar se está rodando
@@ -476,7 +476,7 @@ docker ps
 ```bash
 docker stop meu-website-prod
 docker rm meu-website-prod
-docker rmi 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
+docker rmi 123456789012.dkr.ecr.sa-east-1.amazonaws.com/meu-website:v1.0
 ```
 
 ### Passo 2: Terminar instância EC2
@@ -484,7 +484,6 @@ docker rmi 123456789012.dkr.ecr.us-east-1.amazonaws.com/meu-website:v1.0
 1. Console AWS → EC2
 2. Selecione sua instância
 3. Actions → Instance State → Terminate
-
 ### Passo 3: Deletar imagem do ECR
 
 1. Console AWS → ECR
